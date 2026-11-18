@@ -3,7 +3,7 @@ name: spec-up-render
 on:
   push:
     branches:
-      - master
+      - main
   workflow_dispatch:
 
 concurrency:
@@ -39,11 +39,9 @@ jobs:
           rm -rf .site
           mkdir -p .site
           cp index.html .site/index.html
-          cp logo.svg .site/logo.svg
-          cp -R assets .site/assets
-          cp -R fonts .site/fonts
-          cp -R single-file-test .site/single-file-test
-          cp -R multi-file-test .site/multi-file-test
+          cp -R next .site/next
+          mkdir -p .site/spec
+          cp -R spec/assets .site/spec/assets
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4

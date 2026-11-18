@@ -1,0 +1,172 @@
+<svg width="1200" height="880" viewBox="0 0 1200 880" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Data flow diagram for did:webvh without witnesses, watchers or DNS-linking. The DID controller publishes a self-certifying DID Log, an optional parallel did:web document and optional DID URL path resources to a web server. A resolver fetches the DID Log over HTTPS, verifies every entry, and returns the DID document to a DID-enabled application. Resolvers that only understand did:web read did.json instead. Four trust boundaries, T1 to T4, are marked.">
+<style>
+svg{color:#1c2330;background:#ffffff}
+text{font-family:"IBM Plex Sans",Arial,sans-serif;font-size:11.5px;fill:#1c2330}
+.id{font-family:"IBM Plex Mono",Menlo,monospace;font-weight:600}
+.small{font-size:10.5px;fill:#5a6474}
+.halo{paint-order:stroke;stroke:#ffffff;stroke-width:4px;stroke-linejoin:round}
+.ent,.proc,.obj{fill:#ffffff;stroke:#1c2330;stroke-width:1.4}
+.ctr{fill:none;stroke:#1c2330;stroke-width:1.2;stroke-dasharray:7 5;opacity:.7}
+.st{stroke:#1c2330;stroke-width:1.4}
+.fl{fill:none;stroke:#1c2330;stroke-width:1.3}
+.dep{stroke-dasharray:2 4}
+.op{stroke:#1c2330;stroke-width:1;opacity:.55}
+.tb{stroke:#1c2330;stroke-width:1.3;stroke-dasharray:7 5}
+.nw{stroke:#0a6c7b}.nwt{fill:#0a6c7b}
+.ah{fill:#1c2330}.ahn{fill:#0a6c7b}
+.tag rect{fill:#ffffff;stroke:#1c2330;stroke-width:1.2}
+.tag text{font-family:"IBM Plex Mono",Menlo,monospace;font-weight:600;font-size:11px}
+.tag.nw rect{stroke:#0a6c7b}.tag.nw text{fill:#0a6c7b}
+</style><defs>
+  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ah"/></marker>
+  <marker id="ahn" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" class="ahn"/></marker>
+</defs>
+
+<!-- ===== Containers ===== -->
+<rect class="ctr" x="420" y="20" width="340" height="96" rx="10"/>
+<text x="432" y="40"><tspan class="id">C6*</tspan> DNS &amp; Web PKI</text>
+<text class="small" x="432" y="56">dependency, black box</text>
+
+<rect class="ctr" x="30" y="230" width="320" height="230" rx="10"/>
+<text x="338" y="250" text-anchor="end"><tspan class="id">C1</tspan> Controller Device</text>
+
+<rect class="ctr" x="420" y="230" width="340" height="330" rx="10"/>
+<text x="432" y="250"><tspan class="id">C2†</tspan> Web Server (DID host)</text>
+
+<rect class="ctr" x="840" y="230" width="330" height="260" rx="10"/>
+<text x="1158" y="250" text-anchor="end"><tspan class="id">C4</tspan> Resolver Device</text>
+
+<rect class="ctr" x="840" y="530" width="330" height="180" rx="10"/>
+<text x="852" y="550"><tspan class="id">C3</tspan> Client Device</text>
+
+<!-- ===== Operator lines ===== -->
+<line class="op" x1="380" y1="65" x2="420" y2="65"/>
+<line class="op" x1="590" y1="560" x2="590" y2="600"/>
+<line class="op" x1="1085" y1="194" x2="1085" y2="230"/>
+
+<!-- ===== Flows ===== -->
+<!-- F1 -->
+<line class="fl" x1="110" y1="194" x2="128" y2="266" marker-end="url(#ah)"/>
+<text class="halo" x="126" y="222"><tspan class="id">F1</tspan> Manage DID</text>
+<!-- F2 -->
+<line class="fl nw" x1="185" y1="310" x2="543" y2="310" marker-end="url(#ahn)"/>
+<text class="halo" x="290" y="300" text-anchor="middle"><tspan class="id nwt">F2†</tspan> Publish files (deploy)</text>
+<!-- F7 -->
+<line class="fl nw" x1="627" y1="285" x2="913" y2="285" marker-end="url(#ahn)"/>
+<text class="halo" x="705" y="279" text-anchor="middle"><tspan class="id nwt">F7†</tspan> GET did.jsonl</text>
+<line class="fl nw" x1="635" y1="310" x2="905" y2="310" marker-end="url(#ahn)"/>
+<text class="halo" x="705" y="304" text-anchor="middle"><tspan class="id nwt">F10*</tspan> GET whois.vp, files</text>
+<line class="fl nw" x1="627" y1="335" x2="913" y2="335" marker-end="url(#ahn)"/>
+<text class="halo" x="705" y="329" text-anchor="middle"><tspan class="id nwt">F9*</tspan> GET did.json (did:web)</text>
+<!-- F8 (dependency) -->
+<polyline class="fl dep" points="720,65 950,65 950,263" marker-end="url(#ah)"/>
+<text class="halo" x="835" y="57" text-anchor="middle"><tspan class="id">F8*</tspan> DNS (DoH) + TLS</text>
+<line class="fl dep" x1="632" y1="93" x2="596" y2="263" marker-end="url(#ah)"/>
+<text class="halo" x="624" y="180"><tspan class="id">F8*</tspan></text>
+<!-- F6 -->
+<line class="fl" x1="950" y1="563" x2="950" y2="357" marker-start="url(#ah)" marker-end="url(#ah)"/>
+<text class="halo" x="938" y="440" text-anchor="end"><tspan class="id">F6</tspan> Resolve</text>
+<!-- F5 -->
+<line class="fl" x1="915" y1="740" x2="930" y2="652" marker-end="url(#ah)"/>
+<text class="halo" x="905" y="728" text-anchor="end"><tspan class="id">F5</tspan> Use DID URL</text>
+<!-- F4 -->
+<line class="fl" x1="1040" y1="762" x2="977" y2="762" marker-end="url(#ah)"/>
+<text class="halo" x="985" y="808"><tspan class="id">F4</tspan> Give DID URL</text>
+
+<!-- ===== External entities ===== -->
+<rect class="ent" x="210" y="43" width="170" height="44"/>
+<text x="295" y="61" text-anchor="middle" class="id">E7*</text>
+<text x="295" y="77" text-anchor="middle">Registrar, DNS, CA</text>
+
+<rect class="ent" x="40" y="150" width="140" height="44"/>
+<text x="110" y="168" text-anchor="middle" class="id">E1</text>
+<text x="110" y="184" text-anchor="middle">DID Controller</text>
+
+<rect class="ent" x="505" y="600" width="170" height="44"/>
+<text x="590" y="618" text-anchor="middle" class="id">E5†</text>
+<text x="590" y="634" text-anchor="middle">Web Hosting Provider</text>
+
+<rect class="ent" x="1010" y="150" width="150" height="44"/>
+<text x="1085" y="168" text-anchor="middle" class="id">E4</text>
+<text x="1085" y="184" text-anchor="middle">Resolver Provider</text>
+
+<rect class="ent" x="845" y="740" width="130" height="44"/>
+<text x="910" y="758" text-anchor="middle" class="id">E2</text>
+<text x="910" y="774" text-anchor="middle">DID URL User</text>
+
+<rect class="ent" x="1040" y="740" width="130" height="44"/>
+<text x="1105" y="758" text-anchor="middle" class="id">E3</text>
+<text x="1105" y="774" text-anchor="middle">DID URL Author</text>
+
+<!-- ===== Processes ===== -->
+<ellipse class="proc" cx="650" cy="65" rx="70" ry="28"/>
+<text x="650" y="61" text-anchor="middle" class="id">P6*</text>
+<text x="650" y="77" text-anchor="middle">DNS + CA</text>
+
+<circle class="proc nw" cx="140" cy="310" r="45"/>
+<text x="140" y="298" text-anchor="middle" class="id nwt">P1†</text>
+<text x="140" y="313" text-anchor="middle">Controller</text>
+<text x="140" y="327" text-anchor="middle">App</text>
+
+<circle class="proc" cx="590" cy="310" r="45"/>
+<text x="590" y="298" text-anchor="middle" class="id">P2†</text>
+<text x="590" y="313" text-anchor="middle">Web</text>
+<text x="590" y="327" text-anchor="middle">Server</text>
+
+<circle class="proc nw" cx="950" cy="310" r="45"/>
+<text x="950" y="298" text-anchor="middle" class="id nwt">P4†</text>
+<text x="950" y="313" text-anchor="middle">did:webvh</text>
+<text x="950" y="327" text-anchor="middle">Resolver</text>
+
+<circle class="proc" cx="950" cy="610" r="45"/>
+<text x="950" y="598" text-anchor="middle" class="id">P3</text>
+<text x="950" y="613" text-anchor="middle">DID-enabled</text>
+<text x="950" y="627" text-anchor="middle">App</text>
+
+<!-- ===== Data stores ===== -->
+<line class="st nw" x1="60" y1="395" x2="330" y2="395"/><line class="st nw" x1="60" y1="435" x2="330" y2="435"/>
+<text x="195" y="411" text-anchor="middle"><tspan class="id nwt">D2†</tspan> Update keys, pre-rotation keys,</text>
+<text x="195" y="427" text-anchor="middle">DID keys, host deploy credentials</text>
+
+<line class="st" x1="440" y1="385" x2="740" y2="385"/><line class="st" x1="440" y1="411" x2="740" y2="411"/>
+<text x="590" y="402" text-anchor="middle"><tspan class="id">D3†</tspan> Web root (/.well-known/ or DID path)</text>
+
+<line class="st nw" x1="1010" y1="365" x2="1160" y2="365"/><line class="st nw" x1="1010" y1="403" x2="1160" y2="403"/>
+<text x="1085" y="381" text-anchor="middle"><tspan class="id nwt">D6†</tspan> Cache: last-seen</text>
+<text x="1085" y="396" text-anchor="middle">versionId, ttl</text>
+
+<line class="st" x1="1010" y1="600" x2="1160" y2="600"/><line class="st" x1="1010" y1="630" x2="1160" y2="630"/>
+<text x="1085" y="619" text-anchor="middle"><tspan class="id">D5</tspan> Client data store</text>
+
+<!-- ===== Data objects ===== -->
+<path class="obj nw" d="M200,146 H363 L375,158 V198 H200 Z"/><path class="fl nw" d="M363,146 V158 H375"/>
+<text x="287" y="166" text-anchor="middle" class="id nwt">D1†</text>
+<text x="287" y="184" text-anchor="middle">did:webvh:{SCID}:host…</text>
+
+<path class="obj nw" d="M440,425 H578 L590,437 V477 H440 Z"/><path class="fl nw" d="M578,425 V437 H590"/>
+<text x="515" y="445" text-anchor="middle"><tspan class="id nwt">D12*</tspan> did.jsonl</text>
+<text x="515" y="462" text-anchor="middle">DID Log (self-certifying)</text>
+
+<path class="obj nw" d="M605,425 H728 L740,437 V477 H605 Z"/><path class="fl nw" d="M728,425 V437 H740"/>
+<text x="672" y="445" text-anchor="middle"><tspan class="id nwt">D11†</tspan> did.json</text>
+<text x="672" y="462" text-anchor="middle">Parallel did:web (opt.)</text>
+
+<path class="obj nw" d="M440,492 H578 L590,504 V544 H440 Z"/><path class="fl nw" d="M578,492 V504 H590"/>
+<text x="515" y="512" text-anchor="middle"><tspan class="id nwt">D13*</tspan> whois.vp, files</text>
+<text x="515" y="529" text-anchor="middle">DID URL path resources</text>
+
+<path class="obj" d="M1010,420 H1148 L1160,432 V472 H1010 Z"/><path class="fl" d="M1148,420 V432 H1160"/>
+<text x="1085" y="440" text-anchor="middle" class="id">D8–D10</text>
+<text x="1085" y="457" text-anchor="middle">DIDDoc + metadata</text>
+
+<path class="obj" d="M845,800 H963 L975,812 V844 H845 Z"/><path class="fl" d="M963,800 V812 H975"/>
+<text x="905" y="818" text-anchor="middle" class="id">D4</text>
+<text x="905" y="835" text-anchor="middle">DID URL</text>
+
+<!-- ===== Trust boundary tags ===== -->
+<g class="tag nw"><rect x="383" y="302" width="38" height="17" rx="3"/><text x="402" y="314" text-anchor="middle">T1†</text></g>
+<g class="tag nw"><rect x="790" y="302" width="38" height="17" rx="3"/><text x="809" y="314" text-anchor="middle">T1†</text></g>
+<g class="tag"><rect x="935" y="502" width="30" height="17" rx="3"/><text x="950" y="514" text-anchor="middle">T2</text></g>
+<g class="tag"><rect x="993" y="754" width="30" height="17" rx="3"/><text x="1008" y="766" text-anchor="middle">T3</text></g>
+<g class="tag"><rect x="931" y="140" width="38" height="17" rx="3"/><text x="950" y="152" text-anchor="middle">T4*</text></g>
+</svg>
