@@ -1,39 +1,27 @@
 {
   "specs": [
     {
-      "title": "Spec-Up Example",
-      "spec_directory": "./single-file-test",
-      "output_path": "./",
-      "logo": "logo.svg",
-      "logo_link": "https://github.com/decentralized-identity/spec-up",
-      "source": {
-        "host": "github",
-        "account": "decentralized-identity",
-        "repo": "spec-up"
-      },
-      "external_specs": [
-        {
-          "PE": "https://identity.foundation/presentation-exchange"
-        }
-      ],
-      "katex": true
-    },
-    {
-      "title": "Spec-Up Multi-File Example",
-      "spec_directory": "./multi-file-test",
+      "title": "The did:webvh Threat Model",
+      "spec_directory": "./spec",
+      "output_path": "./next",
       "markdown_paths": [
         "header.md",
-        "abstract.md",
-        "getting-started.md",
-        "features.md"
+        "introduction.md",
+        "layer1-did-threat-model.md",
+        "layer2-did-web.md",
+        "layer3-didwebvh.md",
+        "layer4-didwebvh-extended.md",
+        "scope-and-findings.md",
+        "references.md"
       ],
-      "logo": "../logo.svg",
-      "logo_link": "https://github.com/decentralized-identity/spec-up",
+      "logo": "https://raw.githubusercontent.com/decentralized-identity/didwebvh/refs/heads/main/didwebvh.jpg",
+      "logo_link": "https://github.com/decentralized-identity/didwebvh-threat-model",
       "source": {
         "host": "github",
         "account": "decentralized-identity",
-        "repo": "spec-up"
-      }
+        "repo": "didwebvh-threat-model"
+      },
+      "katex": false
     }
   ]
 }

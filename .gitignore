@@ -1,4 +1,7 @@
 fonts
+# Rendered output (built and published by the GitHub Action).
+# The root index.html is a hand-written redirect to next/ and is tracked.
+/next/
 .vite
 .local-dev
 
